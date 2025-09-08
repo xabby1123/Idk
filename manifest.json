@@ -1,0 +1,16 @@
+{
+  "name": "XG IPTV Player",
+  "short_name": "XG IPTV",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f1224",
+  "theme_color": "#161938",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/logo-xg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

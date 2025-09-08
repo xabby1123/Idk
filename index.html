@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XG Private IPTV Player</title>
+  <link rel="icon" href="assets/logo-xg.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- xgplayer core & plugins (CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/xgplayer/dist/index.min.css" />
+  <script src="https://unpkg.com/xgplayer/dist/index.min.js"></script>
+  <script src="https://unpkg.com/xgplayer-hls.js/dist/index.min.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#161938">
+  <!-- iOS PWA support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+</head>
+<body>
+  <header>
+    <img src="assets/logo-xg.png" alt="XG" class="logo">
+    <h1>XG Private IPTV Player</h1>
+  </header>
+
+  <section class="login">
+    <div class="tabs">
+      <button class="tab active" data-tab="xtream">Xtream</button>
+      <button class="tab" data-tab="m3u">M3U</button>
+    </div>
+
+    <div class="tabcontent active" id="xtream">
+      <div class="grid">
+        <label>Host (e.g. http://example.com:8080)
+          <input id="xt_host" placeholder="http://example.com:8080">
+        </label>
+        <label>Username
+          <input id="xt_user" placeholder="username">
+        </label>
+        <label>Password
+          <input id="xt_pass" placeholder="password" type="password">
+        </label>
+        <label>Use CORS proxy (optional prefix)
+          <input id="cors_prefix" placeholder="https://your-cors-proxy/">
+        </label>
+        <button id="btn_xt_fetch">Fetch Live List</button>
+      </div>
+    </div>
+
+    <div class="tabcontent" id="m3u">
+      <div class="grid">
+        <label>M3U URL
+          <input id="m3u_url" placeholder="https://.../playlist.m3u">
+        </label>
+        <label>Use CORS proxy (optional prefix)
+          <input id="m3u_cors_prefix" placeholder="https://your-cors-proxy/">
+        </label>
+        <button id="btn_m3u_load">Load M3U</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <aside id="channelList">
+      <h3>Channels</h3>
+      <ul id="list"></ul>
+    </aside>
+    <section id="playerSection">
+      <div id="player" class="xgplayer"></div>
+      <div id="nowPlaying">Load a channel to start playing.</div>
+    </section>
+  </main>
+
+  <footer>
+    <small>For private lawful use. Provide your own playlists/servers. © XG Player</small>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+</body>
+</html>
